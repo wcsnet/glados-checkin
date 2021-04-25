@@ -28,15 +28,20 @@ def start():
 
     if 'message' in checkin.text:
         mess = checkin.json()['message']
-        print(state.json())
+        if mess = '没有权限'
+            requests.get('https://sc.ftqq.com/' + sckey + '.send?text=cookie过期')
         time = state.json()['data']['leftDays']
         time = time.split('.')[0]
         #print(time)
-        if sever == 'on':
-            requests.get('https://sc.ftqq.com/' + sckey + '.send?text='+mess+'，you have '+time+' days left')
+        notice(time,sckey,sever,mess)
+
+        
+def notice(time,sckey,sever,mess):
+    if sever == 'on':
+        requests.get('https://sc.ftqq.com/' + sckey + '.send?text='+mess+'，you have '+time+' days left')
     else:
         requests.get('https://sc.ftqq.com/' + sckey + '.send?text=cookie过期')
-
+        
 def main_handler(event, context):
   return start()
 
