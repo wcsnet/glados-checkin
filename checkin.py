@@ -40,7 +40,7 @@ def notice(time,sckey,sever,mess):
     if sever == 'on':
         requests.get('https://sc.ftqq.com/' + sckey + '.send?text='+mess+'，you have '+time+' days left')
     else:
-        requests.get('https://sc.ftqq.com/' + sckey + '.send?text=cookie过期')
+        requests.get('https://sc.ftqq.com/' + sckey + '.send?text=通知没打开')
         
 def main_handler(event, context):
   return start()
