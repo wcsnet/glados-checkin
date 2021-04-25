@@ -28,7 +28,7 @@ def start():
 
     if 'message' in checkin.text:
         mess = checkin.json()['message']
-        if mess = '没有权限'
+        if mess =='没有权限'
             requests.get('https://sc.ftqq.com/' + sckey + '.send?text=cookie过期')
         time = state.json()['data']['leftDays']
         time = time.split('.')[0]
