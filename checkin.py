@@ -28,7 +28,7 @@ def start():
 
     if 'message' in checkin.text:
         mess = checkin.json()['message']
-        if mess =='\u6ca1\u6709\u6743\u9650'
+        if mess == '\u6ca1\u6709\u6743\u9650':
             requests.get('https://sc.ftqq.com/' + sckey + '.send?text=cookie过期')
         time = state.json()['data']['leftDays']
         time = time.split('.')[0]
