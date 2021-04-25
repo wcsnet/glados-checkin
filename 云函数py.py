@@ -7,8 +7,7 @@ sckey = 'SCU89402Tf98b7f01ca3394b9ce9aa5e2ed1a****************'
 cookie = '__cfduid=d825014ac33b402b3f**************'
 referer = 'https://glados.rocks/console/checkin'
 
-def start():
-    
+def start():  
     url= "https://glados.rocks/api/user/checkin"
     url2= "https://glados.rocks/api/user/status"
     origin = "https://glados.rocks"
@@ -23,17 +22,22 @@ def start():
 
     if 'message' in checkin.text:
         mess = checkin.json()['message']
+        if mess == '\u6ca1\u6709\u6743\u9650':
+            requests.get('https://sc.ftqq.com/' + sckey + '.send?text=cookie过期')
         time = state.json()['data']['leftDays']
         time = time.split('.')[0]
         #print(time)
-        if sever == 'on':
-            requests.get('https://sc.ftqq.com/' + sckey + '.send?text='+mess+'，you have '+time+' days left')
-    else:
-        requests.get('https://sc.ftqq.com/' + sckey + '.send?text=cookie过期')
+        notice(time,sckey,sever,mess)
 
+        
+def notice(time,sckey,sever,mess):
+    if sever == 'on':
+        requests.get('https://sc.ftqq.com/' + sckey + '.send?text='+mess+'，you have '+time+' days left')
+    else:
+        requests.get('https://sc.ftqq.com/' + sckey + '.send?text=通知没打开')
+        
 def main_handler(event, context):
   return start()
 
 if __name__ == '__main__':
-  start()
-
+    start()
